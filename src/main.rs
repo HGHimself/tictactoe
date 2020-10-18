@@ -3,10 +3,10 @@ use regex::Regex;
 
 macro_rules! lazy_regex {
     // `()` indicates that the macro takes no argument.
-    ($pattern:literal) => {
+    ($pattern:literal, $name:ident) => {
         // The macro will expand into the contents of this block.
         lazy_static! {
-            static ref RE: Regex = Regex::new($pattern).unwrap();
+            static ref $name: Regex = Regex::new($pattern).unwrap();
         }
     };
 }
@@ -38,79 +38,84 @@ fn alphabet_to_index(char: &str) -> Option<usize> {
     }
 }
 
-fn captures_len(input: &str, find: &dyn Fn(&str) -> Option<regex::Match>) -> usize {
+fn captures_len(input: &str, re: &Regex) -> usize {
     let mut text = &input[..];
     let mut count = 0;
 
-    while let Some(i) = find(text) {
+    while let Some(i) = re.find(text) {
         count += 1;
         text = &text[i.end()..];
     }
 
     return count;
+}
+
+fn x_4_in_row(input: &str) -> usize {
+    lazy_regex!(r"xxxx", RE);
+    captures_len(input, &*RE)
 }
 
 // this will count ExxxExxxE as one since the middle E gets consumed
 // method below will count the second sequence
 fn x_2_empty_3_in_row_single(input: &str) -> usize {
-    lazy_regex!(r"ExxxE");
-
-    let mut text = &input[..];
-    let mut count = 0;
-
-    while let Some(i) = RE.find(text) {
-        count += 1;
-        text = &text[i.end()..];
-    }
-
-    return count;
+    lazy_regex!(r"ExxxE", RE);
+    captures_len(input, &*RE)
 }
 
 // this is funky because of a special case ExxxExxxE
 // so we will count the second ExxxE here
 fn x_2_empty_3_in_row_double(input: &str) -> usize {
-    lazy_regex!(r"ExxxExxxE");
-
-    let mut text = &input[..];
-    let mut count = 0;
-
-    while let Some(i) = RE.find(text) {
-        count += 1;
-        text = &text[i.end()..];
-    }
-
-    return count;
+    lazy_regex!(r"ExxxExxxE", RE);
+    captures_len(input, &*RE)
 }
 
 fn x_2_empty_3_in_row(input: &str) -> usize {
     x_2_empty_3_in_row_single(input) + x_2_empty_3_in_row_double(input)
 }
-//
-// fn x_1_empty_3_in_row(input: &str) -> bool {
-//     lazy_static! {
-//         static ref RE1: Regex = Regex::new(r"[^E]xxxE").unwrap();
-//         static ref RE2: Regex = Regex::new(r"Exxx[^E]").unwrap();
-//     }
-//     RE1.is_match(input) || RE2.is_match(input)
-// }
-//
-// fn x_2_empty_2_in_row(input: &str) -> bool {
-//     lazy_static! {
-//         static ref RE: Regex = Regex::new(r"ExxE").unwrap();
-//     }
-//     RE.is_match(input)
-// }
-//
-// fn x_1_empty_2_in_row(input: &str) -> bool {
-//     lazy_static! {
-//         static ref RE1: Regex = Regex::new(r"Exx$").unwrap();
-//         static ref RE2: Regex = Regex::new(r"Exx[^Ex]").unwrap();
-//
-//         static ref RE3: Regex = Regex::new(r"^xxE").unwrap();
-//         static ref RE4: Regex = Regex::new(r"[^Ex]xxE").unwrap();
-//     }
-//     RE1.is_match(input) || RE2.is_match(input) || RE3.is_match(input) || RE4.is_match(input)
-// }
+
+fn x_1_empty_3_in_row_left(input: &str) -> usize {
+    lazy_regex!(r"Exxx[^Ex]", RE);
+    captures_len(input, &*RE)
+}
+
+fn x_1_empty_3_in_row_right(input: &str) -> usize {
+    lazy_regex!(r"[^Ex]xxxE", RE);
+    captures_len(input, &*RE)
+}
+
+fn x_1_empty_3_in_row(input: &str) -> usize {
+    x_1_empty_3_in_row_right(input) + x_1_empty_3_in_row_left(input)
+}
+
+fn x_2_empty_2_in_row_single(input: &str) -> usize {
+    lazy_regex!(r"ExxE", RE);
+    captures_len(input, &*RE)
+}
+
+// this is funky because of a special case ExxxExxxE
+// so we will count the second ExxxE here
+fn x_2_empty_2_in_row_double(input: &str) -> usize {
+    lazy_regex!(r"ExxExxE", RE);
+    captures_len(input, &*RE)
+}
+
+fn x_2_empty_2_in_row(input: &str) -> usize {
+    x_2_empty_2_in_row_single(input) + x_2_empty_2_in_row_double(input)
+}
+
+fn x_1_empty_2_in_row_left(input: &str) -> usize {
+    lazy_regex!(r"Exx[^Ex]", RE);
+    captures_len(input, &*RE)
+}
+
+fn x_1_empty_2_in_row_right(input: &str) -> usize {
+    lazy_regex!(r"[^Ex]xxE", RE);
+    captures_len(input, &*RE)
+}
+
+fn x_1_empty_2_in_row(input: &str) -> usize {
+    x_1_empty_2_in_row_right(input) + x_1_empty_2_in_row_left(input)
+}
 
 #[cfg(test)]
 mod test {
@@ -131,44 +136,62 @@ mod test {
 
     #[test]
     fn test_x_2_empty_3_in_row() {
+        assert_eq!(x_2_empty_3_in_row_double("_ExxxE_"), 0);
+        assert_eq!(x_2_empty_3_in_row_double("_ExxxExxx_"), 0);
+        assert_eq!(x_2_empty_3_in_row_double("_ExxxEExxxE_"), 0);
+        assert_eq!(x_2_empty_3_in_row_double("_ExxxExxxE_"), 1);
 
-        assert_eq!(x_2_empty_3_in_row_double("ExxxE"), 0);
-        assert_eq!(x_2_empty_3_in_row_double("ExxxExxx"), 0);
-        assert_eq!(x_2_empty_3_in_row_double("ExxxEExxxE"), 0);
-        assert_eq!(x_2_empty_3_in_row_double("ExxxExxxE"), 1);
+        assert_eq!(x_2_empty_3_in_row_single("_ExxxE_"), 1);
+        assert_eq!(x_2_empty_3_in_row_single("_EExxxEE_"), 1);
+        assert_eq!(x_2_empty_3_in_row_single("_ExxE_"), 0);
+        assert_eq!(x_2_empty_3_in_row_single("_ExxxExxxE_"), 1);
+        assert_eq!(x_2_empty_3_in_row_single("_ExxxEExxxE_"), 2);
 
-        assert_eq!(x_2_empty_3_in_row_single("ExxxE"), 1);
-        assert_eq!(x_2_empty_3_in_row_single("EExxxEE"), 1);
-        assert_eq!(x_2_empty_3_in_row_single("ExxE"), 0);
-        assert_eq!(x_2_empty_3_in_row_single("ExxxExxxE"), 1);
-        assert_eq!(x_2_empty_3_in_row_single("ExxxEExxxE"), 2);
-
-        assert_eq!(x_2_empty_3_in_row("ExxxExxxE"), 2);
-        assert_eq!(x_2_empty_3_in_row("ExxxEExxxE"), 2);
+        assert_eq!(x_2_empty_3_in_row("_ExxxExxxE_"), 2);
+        assert_eq!(x_2_empty_3_in_row("_ExxxEExxxE_"), 2);
     }
-    //
-    // #[test]
-    // fn test_x_2_empty_2_in_row() {
-    //     assert_eq!(x_2_empty_2_in_row("ExxE"), true);
-    //     assert_eq!(x_2_empty_2_in_row("EExxEE"), true);
-    //     assert_eq!(x_2_empty_2_in_row("ExxxE"), false);
-    //     assert_eq!(x_2_empty_2_in_row("ExxxExxE"), true);
-    // }
-    //
-    // #[test]
-    // fn test_x_1_empty_2_in_row() {
-    //     assert_eq!(x_1_empty_2_in_row("Exx"), true);
-    //     assert_eq!(x_1_empty_2_in_row("ExxEE"), false);
-    //     assert_eq!(x_1_empty_2_in_row("Exxo"), true);
-    //     assert_eq!(x_1_empty_2_in_row("ExxxE"), false);
-    //     assert_eq!(x_1_empty_2_in_row("Exxx"), false);
-    //
-    //     assert_eq!(x_1_empty_2_in_row("xxE"), true);
-    //     assert_eq!(x_1_empty_2_in_row("EExxE"), false);
-    //     assert_eq!(x_1_empty_2_in_row("oxxE"), true);
-    //     assert_eq!(x_1_empty_2_in_row("ExxE"), false);
-    //     assert_eq!(x_2_empty_2_in_row("ExxxExx"), true);
-    // }
+
+    #[test]
+    fn test_x_1_empty_3_in_row() {
+        assert_eq!(x_1_empty_3_in_row("_Exxx_"), 1);
+        assert_eq!(x_1_empty_3_in_row("_ExxxEE_"), 0);
+        assert_eq!(x_1_empty_3_in_row("_Exxxo_"), 1);
+        assert_eq!(x_1_empty_3_in_row("_ExxxE_"), 0);
+        assert_eq!(x_1_empty_3_in_row("_xxxE_"), 1);
+
+        assert_eq!(x_1_empty_3_in_row("_ExxxExxx_"), 1);
+        assert_eq!(x_1_empty_3_in_row("_ExxxoxxxE_"), 2);
+        assert_eq!(x_1_empty_3_in_row("_oxxxE_"), 1);
+        assert_eq!(x_1_empty_3_in_row("_ExxE_"), 0);
+        assert_eq!(x_1_empty_3_in_row("_xxxExxxExx_"), 1);
+    }
+
+
+    #[test]
+    fn test_x_2_empty_2_in_row() {
+        assert_eq!(x_2_empty_2_in_row("_ExxE_"), 1);
+        assert_eq!(x_2_empty_2_in_row("_EExxEE_"), 1);
+        assert_eq!(x_2_empty_2_in_row("_ExxxE_"), 0);
+        assert_eq!(x_2_empty_2_in_row("_ExxxExxE_"), 1);
+        assert_eq!(x_2_empty_2_in_row("_ExxExxE_"), 2);
+        assert_eq!(x_2_empty_2_in_row("_ExxEExxE_"), 2);
+    }
+
+    #[test]
+    fn test_x_1_empty_2_in_row() {
+        assert_eq!(x_1_empty_2_in_row("_Exx_"), 1);
+        assert_eq!(x_1_empty_2_in_row("_ExxEE_"), 0);
+        assert_eq!(x_1_empty_2_in_row("_Exxo_"), 1);
+        assert_eq!(x_1_empty_2_in_row("_ExxxE_"), 0);
+        assert_eq!(x_1_empty_2_in_row("_Exxx_"), 0);
+
+        assert_eq!(x_1_empty_2_in_row("_xxE_"), 1);
+        assert_eq!(x_1_empty_2_in_row("_EExxE_"), 0);
+        assert_eq!(x_1_empty_2_in_row("_oxxE_"), 1);
+        assert_eq!(x_1_empty_2_in_row("_ExxE_"), 0);
+        assert_eq!(x_1_empty_2_in_row("_ExxExx_"), 1);
+        assert_eq!(x_1_empty_2_in_row("_xxEExx_"), 2);
+    }
     //
     // #[test]
     // fn test_regex_captures() {
