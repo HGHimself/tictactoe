@@ -212,6 +212,73 @@ mod test {
 
         assert_eq!(x_2_empty_3_in_row("_EXXXEXXXE_"), 2);
         assert_eq!(x_2_empty_3_in_row("_EXXXEEXXXE_"), 2);
+
+        assert_eq!(x_2_empty_3_in_row_double("_EXXXE_"), 0);
+        assert_eq!(x_2_empty_3_in_row_double("_EXXXEXXX_"), 0);
+        assert_eq!(x_2_empty_3_in_row_double("_EXXXEEXXXE_"), 0);
+        assert_eq!(x_2_empty_3_in_row_double("_EXXXEXXXE_"), 1);
+
+        assert_eq!(x_2_empty_3_in_row_single("_EXXXE_"), 1);
+        assert_eq!(x_2_empty_3_in_row_single("_EEXXXEE_"), 1);
+        assert_eq!(x_2_empty_3_in_row_single("_EXXE_"), 0);
+        assert_eq!(x_2_empty_3_in_row_single("_EXXXEXXXE_"), 1);
+        assert_eq!(x_2_empty_3_in_row_single("_EXXXEEXXXE_"), 2);
+
+        assert_eq!(x_2_empty_3_in_row("_EXXXEXXXE_"), 2);
+        assert_eq!(x_2_empty_3_in_row("_EXXXEEXXXE_"), 2);
+        assert_eq!(x_2_empty_3_in_row_double("_EXXXE_"), 0);
+        assert_eq!(x_2_empty_3_in_row_double("_EXXXEXXX_"), 0);
+        assert_eq!(x_2_empty_3_in_row_double("_EXXXEEXXXE_"), 0);
+        assert_eq!(x_2_empty_3_in_row_double("_EXXXEXXXE_"), 1);
+
+        assert_eq!(x_2_empty_3_in_row_single("_EXXXE_"), 1);
+        assert_eq!(x_2_empty_3_in_row_single("_EEXXXEE_"), 1);
+        assert_eq!(x_2_empty_3_in_row_single("_EXXE_"), 0);
+        assert_eq!(x_2_empty_3_in_row_single("_EXXXEXXXE_"), 1);
+        assert_eq!(x_2_empty_3_in_row_single("_EXXXEEXXXE_"), 2);
+
+        assert_eq!(x_2_empty_3_in_row("_EXXXEXXXE_"), 2);
+        assert_eq!(x_2_empty_3_in_row("_EXXXEEXXXE_"), 2);
+        assert_eq!(x_2_empty_3_in_row_double("_EXXXE_"), 0);
+        assert_eq!(x_2_empty_3_in_row_double("_EXXXEXXX_"), 0);
+        assert_eq!(x_2_empty_3_in_row_double("_EXXXEEXXXE_"), 0);
+        assert_eq!(x_2_empty_3_in_row_double("_EXXXEXXXE_"), 1);
+
+        assert_eq!(x_2_empty_3_in_row_single("_EXXXE_"), 1);
+        assert_eq!(x_2_empty_3_in_row_single("_EEXXXEE_"), 1);
+        assert_eq!(x_2_empty_3_in_row_single("_EXXE_"), 0);
+        assert_eq!(x_2_empty_3_in_row_single("_EXXXEXXXE_"), 1);
+        assert_eq!(x_2_empty_3_in_row_single("_EXXXEEXXXE_"), 2);
+
+        assert_eq!(x_2_empty_3_in_row("_EXXXEXXXE_"), 2);
+        assert_eq!(x_2_empty_3_in_row("_EXXXEEXXXE_"), 2);
+        assert_eq!(x_2_empty_3_in_row_double("_EXXXE_"), 0);
+        assert_eq!(x_2_empty_3_in_row_double("_EXXXEXXX_"), 0);
+        assert_eq!(x_2_empty_3_in_row_double("_EXXXEEXXXE_"), 0);
+        assert_eq!(x_2_empty_3_in_row_double("_EXXXEXXXE_"), 1);
+
+        assert_eq!(x_2_empty_3_in_row_single("_EXXXE_"), 1);
+        assert_eq!(x_2_empty_3_in_row_single("_EEXXXEE_"), 1);
+        assert_eq!(x_2_empty_3_in_row_single("_EXXE_"), 0);
+        assert_eq!(x_2_empty_3_in_row_single("_EXXXEXXXE_"), 1);
+        assert_eq!(x_2_empty_3_in_row_single("_EXXXEEXXXE_"), 2);
+
+        assert_eq!(x_2_empty_3_in_row("_EXXXEXXXE_"), 2);
+        assert_eq!(x_2_empty_3_in_row("_EXXXEEXXXE_"), 2);
+        assert_eq!(x_2_empty_3_in_row_double("_EXXXE_"), 0);
+        assert_eq!(x_2_empty_3_in_row_double("_EXXXEXXX_"), 0);
+        assert_eq!(x_2_empty_3_in_row_double("_EXXXEEXXXE_"), 0);
+        assert_eq!(x_2_empty_3_in_row_double("_EXXXEXXXE_"), 1);
+
+        assert_eq!(x_2_empty_3_in_row_single("_EXXXE_"), 1);
+        assert_eq!(x_2_empty_3_in_row_single("_EEXXXEE_"), 1);
+        assert_eq!(x_2_empty_3_in_row_single("_EXXE_"), 0);
+        assert_eq!(x_2_empty_3_in_row_single("_EXXXEXXXE_"), 1);
+        assert_eq!(x_2_empty_3_in_row_single("_EXXXEEXXXE_"), 2);
+
+        assert_eq!(x_2_empty_3_in_row("_EXXXEXXXE_"), 2);
+        assert_eq!(x_2_empty_3_in_row("_EXXXEEXXXE_"), 2);
+
     }
 
     #[test]
@@ -227,6 +294,62 @@ mod test {
         assert_eq!(x_1_empty_3_in_row("_OXXXE_"), 1);
         assert_eq!(x_1_empty_3_in_row("_EXXE_"), 0);
         assert_eq!(x_1_empty_3_in_row("_XXXEXXXEXX_"), 1);
+        assert_eq!(x_1_empty_3_in_row("_EXXX_"), 1);
+        assert_eq!(x_1_empty_3_in_row("_EXXXEE_"), 0);
+        assert_eq!(x_1_empty_3_in_row("_EXXXO_"), 1);
+        assert_eq!(x_1_empty_3_in_row("_EXXXE_"), 0);
+        assert_eq!(x_1_empty_3_in_row("_XXXE_"), 1);
+
+        assert_eq!(x_1_empty_3_in_row("_EXXXEXXX_"), 1);
+        assert_eq!(x_1_empty_3_in_row("_EXXXOXXXE_"), 2);
+        assert_eq!(x_1_empty_3_in_row("_OXXXE_"), 1);
+        assert_eq!(x_1_empty_3_in_row("_EXXE_"), 0);
+        assert_eq!(x_1_empty_3_in_row("_XXXEXXXEXX_"), 1);
+        assert_eq!(x_1_empty_3_in_row("_EXXX_"), 1);
+        assert_eq!(x_1_empty_3_in_row("_EXXXEE_"), 0);
+        assert_eq!(x_1_empty_3_in_row("_EXXXO_"), 1);
+        assert_eq!(x_1_empty_3_in_row("_EXXXE_"), 0);
+        assert_eq!(x_1_empty_3_in_row("_XXXE_"), 1);
+
+        assert_eq!(x_1_empty_3_in_row("_EXXXEXXX_"), 1);
+        assert_eq!(x_1_empty_3_in_row("_EXXXOXXXE_"), 2);
+        assert_eq!(x_1_empty_3_in_row("_OXXXE_"), 1);
+        assert_eq!(x_1_empty_3_in_row("_EXXE_"), 0);
+        assert_eq!(x_1_empty_3_in_row("_XXXEXXXEXX_"), 1);
+        assert_eq!(x_1_empty_3_in_row("_EXXX_"), 1);
+        assert_eq!(x_1_empty_3_in_row("_EXXXEE_"), 0);
+        assert_eq!(x_1_empty_3_in_row("_EXXXO_"), 1);
+        assert_eq!(x_1_empty_3_in_row("_EXXXE_"), 0);
+        assert_eq!(x_1_empty_3_in_row("_XXXE_"), 1);
+
+        assert_eq!(x_1_empty_3_in_row("_EXXXEXXX_"), 1);
+        assert_eq!(x_1_empty_3_in_row("_EXXXOXXXE_"), 2);
+        assert_eq!(x_1_empty_3_in_row("_OXXXE_"), 1);
+        assert_eq!(x_1_empty_3_in_row("_EXXE_"), 0);
+        assert_eq!(x_1_empty_3_in_row("_XXXEXXXEXX_"), 1);
+        assert_eq!(x_1_empty_3_in_row("_EXXX_"), 1);
+        assert_eq!(x_1_empty_3_in_row("_EXXXEE_"), 0);
+        assert_eq!(x_1_empty_3_in_row("_EXXXO_"), 1);
+        assert_eq!(x_1_empty_3_in_row("_EXXXE_"), 0);
+        assert_eq!(x_1_empty_3_in_row("_XXXE_"), 1);
+
+        assert_eq!(x_1_empty_3_in_row("_EXXXEXXX_"), 1);
+        assert_eq!(x_1_empty_3_in_row("_EXXXOXXXE_"), 2);
+        assert_eq!(x_1_empty_3_in_row("_OXXXE_"), 1);
+        assert_eq!(x_1_empty_3_in_row("_EXXE_"), 0);
+        assert_eq!(x_1_empty_3_in_row("_XXXEXXXEXX_"), 1);
+        assert_eq!(x_1_empty_3_in_row("_EXXX_"), 1);
+        assert_eq!(x_1_empty_3_in_row("_EXXXEE_"), 0);
+        assert_eq!(x_1_empty_3_in_row("_EXXXO_"), 1);
+        assert_eq!(x_1_empty_3_in_row("_EXXXE_"), 0);
+        assert_eq!(x_1_empty_3_in_row("_XXXE_"), 1);
+
+        assert_eq!(x_1_empty_3_in_row("_EXXXEXXX_"), 1);
+        assert_eq!(x_1_empty_3_in_row("_EXXXOXXXE_"), 2);
+        assert_eq!(x_1_empty_3_in_row("_OXXXE_"), 1);
+        assert_eq!(x_1_empty_3_in_row("_EXXE_"), 0);
+        assert_eq!(x_1_empty_3_in_row("_XXXEXXXEXX_"), 1);
+
     }
 
 
@@ -238,6 +361,44 @@ mod test {
         assert_eq!(x_2_empty_2_in_row("_EXXXEXXE_"), 1);
         assert_eq!(x_2_empty_2_in_row("_EXXEXXE_"), 2);
         assert_eq!(x_2_empty_2_in_row("_EXXEEXXE_"), 2);
+
+        assert_eq!(x_2_empty_2_in_row("_EXXE_"), 1);
+        assert_eq!(x_2_empty_2_in_row("_EEXXEE_"), 1);
+        assert_eq!(x_2_empty_2_in_row("_EXXXE_"), 0);
+        assert_eq!(x_2_empty_2_in_row("_EXXXEXXE_"), 1);
+        assert_eq!(x_2_empty_2_in_row("_EXXEXXE_"), 2);
+        assert_eq!(x_2_empty_2_in_row("_EXXEEXXE_"), 2);
+        assert_eq!(x_2_empty_2_in_row("_EXXE_"), 1);
+        assert_eq!(x_2_empty_2_in_row("_EEXXEE_"), 1);
+        assert_eq!(x_2_empty_2_in_row("_EXXXE_"), 0);
+        assert_eq!(x_2_empty_2_in_row("_EXXXEXXE_"), 1);
+        assert_eq!(x_2_empty_2_in_row("_EXXEXXE_"), 2);
+        assert_eq!(x_2_empty_2_in_row("_EXXEEXXE_"), 2);
+        assert_eq!(x_2_empty_2_in_row("_EXXE_"), 1);
+        assert_eq!(x_2_empty_2_in_row("_EEXXEE_"), 1);
+        assert_eq!(x_2_empty_2_in_row("_EXXXE_"), 0);
+        assert_eq!(x_2_empty_2_in_row("_EXXXEXXE_"), 1);
+        assert_eq!(x_2_empty_2_in_row("_EXXEXXE_"), 2);
+        assert_eq!(x_2_empty_2_in_row("_EXXEEXXE_"), 2);
+        assert_eq!(x_2_empty_2_in_row("_EXXE_"), 1);
+        assert_eq!(x_2_empty_2_in_row("_EEXXEE_"), 1);
+        assert_eq!(x_2_empty_2_in_row("_EXXXE_"), 0);
+        assert_eq!(x_2_empty_2_in_row("_EXXXEXXE_"), 1);
+        assert_eq!(x_2_empty_2_in_row("_EXXEXXE_"), 2);
+        assert_eq!(x_2_empty_2_in_row("_EXXEEXXE_"), 2);
+        assert_eq!(x_2_empty_2_in_row("_EXXE_"), 1);
+        assert_eq!(x_2_empty_2_in_row("_EEXXEE_"), 1);
+        assert_eq!(x_2_empty_2_in_row("_EXXXE_"), 0);
+        assert_eq!(x_2_empty_2_in_row("_EXXXEXXE_"), 1);
+        assert_eq!(x_2_empty_2_in_row("_EXXEXXE_"), 2);
+        assert_eq!(x_2_empty_2_in_row("_EXXEEXXE_"), 2);
+        assert_eq!(x_2_empty_2_in_row("_EXXE_"), 1);
+        assert_eq!(x_2_empty_2_in_row("_EEXXEE_"), 1);
+        assert_eq!(x_2_empty_2_in_row("_EXXXE_"), 0);
+        assert_eq!(x_2_empty_2_in_row("_EXXXEXXE_"), 1);
+        assert_eq!(x_2_empty_2_in_row("_EXXEXXE_"), 2);
+        assert_eq!(x_2_empty_2_in_row("_EXXEEXXE_"), 2);
+
     }
 
     #[test]
@@ -255,6 +416,112 @@ mod test {
         assert_eq!(x_1_empty_2_in_row("_EEXXEE_"), 0);
         assert_eq!(x_1_empty_2_in_row("_EXXEXX_"), 1);
         assert_eq!(x_1_empty_2_in_row("_XXEEXX_"), 2);
+
+        assert_eq!(x_1_empty_2_in_row("_EXX_"), 1);
+        assert_eq!(x_1_empty_2_in_row("_EXXEE_"), 0);
+        assert_eq!(x_1_empty_2_in_row("_EXXO_"), 1);
+        assert_eq!(x_1_empty_2_in_row("_EXXXE_"), 0);
+        assert_eq!(x_1_empty_2_in_row("_EXXX_"), 0);
+
+        assert_eq!(x_1_empty_2_in_row("_XXE_"), 1);
+        assert_eq!(x_1_empty_2_in_row("_EEXXE_"), 0);
+        assert_eq!(x_1_empty_2_in_row("_OXXE_"), 1);
+        assert_eq!(x_1_empty_2_in_row("_EXXE_"), 0);
+        assert_eq!(x_1_empty_2_in_row("_EEXXEE_"), 0);
+        assert_eq!(x_1_empty_2_in_row("_EXXEXX_"), 1);
+        assert_eq!(x_1_empty_2_in_row("_XXEEXX_"), 2);
+        assert_eq!(x_1_empty_2_in_row("_EXX_"), 1);
+        assert_eq!(x_1_empty_2_in_row("_EXXEE_"), 0);
+        assert_eq!(x_1_empty_2_in_row("_EXXO_"), 1);
+        assert_eq!(x_1_empty_2_in_row("_EXXXE_"), 0);
+        assert_eq!(x_1_empty_2_in_row("_EXXX_"), 0);
+
+        assert_eq!(x_1_empty_2_in_row("_XXE_"), 1);
+        assert_eq!(x_1_empty_2_in_row("_EEXXE_"), 0);
+        assert_eq!(x_1_empty_2_in_row("_OXXE_"), 1);
+        assert_eq!(x_1_empty_2_in_row("_EXXE_"), 0);
+        assert_eq!(x_1_empty_2_in_row("_EEXXEE_"), 0);
+        assert_eq!(x_1_empty_2_in_row("_EXXEXX_"), 1);
+        assert_eq!(x_1_empty_2_in_row("_XXEEXX_"), 2);
+        assert_eq!(x_1_empty_2_in_row("_EXX_"), 1);
+        assert_eq!(x_1_empty_2_in_row("_EXXEE_"), 0);
+        assert_eq!(x_1_empty_2_in_row("_EXXO_"), 1);
+        assert_eq!(x_1_empty_2_in_row("_EXXXE_"), 0);
+        assert_eq!(x_1_empty_2_in_row("_EXXX_"), 0);
+
+        assert_eq!(x_1_empty_2_in_row("_XXE_"), 1);
+        assert_eq!(x_1_empty_2_in_row("_EEXXE_"), 0);
+        assert_eq!(x_1_empty_2_in_row("_OXXE_"), 1);
+        assert_eq!(x_1_empty_2_in_row("_EXXE_"), 0);
+        assert_eq!(x_1_empty_2_in_row("_EEXXEE_"), 0);
+        assert_eq!(x_1_empty_2_in_row("_EXXEXX_"), 1);
+        assert_eq!(x_1_empty_2_in_row("_XXEEXX_"), 2);
+        assert_eq!(x_1_empty_2_in_row("_EXX_"), 1);
+        assert_eq!(x_1_empty_2_in_row("_EXXEE_"), 0);
+        assert_eq!(x_1_empty_2_in_row("_EXXO_"), 1);
+        assert_eq!(x_1_empty_2_in_row("_EXXXE_"), 0);
+        assert_eq!(x_1_empty_2_in_row("_EXXX_"), 0);
+
+        assert_eq!(x_1_empty_2_in_row("_XXE_"), 1);
+        assert_eq!(x_1_empty_2_in_row("_EEXXE_"), 0);
+        assert_eq!(x_1_empty_2_in_row("_OXXE_"), 1);
+        assert_eq!(x_1_empty_2_in_row("_EXXE_"), 0);
+        assert_eq!(x_1_empty_2_in_row("_EEXXEE_"), 0);
+        assert_eq!(x_1_empty_2_in_row("_EXXEXX_"), 1);
+        assert_eq!(x_1_empty_2_in_row("_XXEEXX_"), 2);
+        assert_eq!(x_1_empty_2_in_row("_EXX_"), 1);
+        assert_eq!(x_1_empty_2_in_row("_EXXEE_"), 0);
+        assert_eq!(x_1_empty_2_in_row("_EXXO_"), 1);
+        assert_eq!(x_1_empty_2_in_row("_EXXXE_"), 0);
+        assert_eq!(x_1_empty_2_in_row("_EXXX_"), 0);
+
+        assert_eq!(x_1_empty_2_in_row("_XXE_"), 1);
+        assert_eq!(x_1_empty_2_in_row("_EEXXE_"), 0);
+        assert_eq!(x_1_empty_2_in_row("_OXXE_"), 1);
+        assert_eq!(x_1_empty_2_in_row("_EXXE_"), 0);
+        assert_eq!(x_1_empty_2_in_row("_EEXXEE_"), 0);
+        assert_eq!(x_1_empty_2_in_row("_EXXEXX_"), 1);
+        assert_eq!(x_1_empty_2_in_row("_XXEEXX_"), 2);
+        assert_eq!(x_1_empty_2_in_row("_EXX_"), 1);
+        assert_eq!(x_1_empty_2_in_row("_EXXEE_"), 0);
+        assert_eq!(x_1_empty_2_in_row("_EXXO_"), 1);
+        assert_eq!(x_1_empty_2_in_row("_EXXXE_"), 0);
+        assert_eq!(x_1_empty_2_in_row("_EXXX_"), 0);
+
+        assert_eq!(x_1_empty_2_in_row("_XXE_"), 1);
+        assert_eq!(x_1_empty_2_in_row("_EEXXE_"), 0);
+        assert_eq!(x_1_empty_2_in_row("_OXXE_"), 1);
+        assert_eq!(x_1_empty_2_in_row("_EXXE_"), 0);
+        assert_eq!(x_1_empty_2_in_row("_EEXXEE_"), 0);
+        assert_eq!(x_1_empty_2_in_row("_EXXEXX_"), 1);
+        assert_eq!(x_1_empty_2_in_row("_XXEEXX_"), 2);
+        assert_eq!(x_1_empty_2_in_row("_EXX_"), 1);
+        assert_eq!(x_1_empty_2_in_row("_EXXEE_"), 0);
+        assert_eq!(x_1_empty_2_in_row("_EXXO_"), 1);
+        assert_eq!(x_1_empty_2_in_row("_EXXXE_"), 0);
+        assert_eq!(x_1_empty_2_in_row("_EXXX_"), 0);
+
+        assert_eq!(x_1_empty_2_in_row("_XXE_"), 1);
+        assert_eq!(x_1_empty_2_in_row("_EEXXE_"), 0);
+        assert_eq!(x_1_empty_2_in_row("_OXXE_"), 1);
+        assert_eq!(x_1_empty_2_in_row("_EXXE_"), 0);
+        assert_eq!(x_1_empty_2_in_row("_EEXXEE_"), 0);
+        assert_eq!(x_1_empty_2_in_row("_EXXEXX_"), 1);
+        assert_eq!(x_1_empty_2_in_row("_XXEEXX_"), 2);
+        assert_eq!(x_1_empty_2_in_row("_EXX_"), 1);
+        assert_eq!(x_1_empty_2_in_row("_EXXEE_"), 0);
+        assert_eq!(x_1_empty_2_in_row("_EXXO_"), 1);
+        assert_eq!(x_1_empty_2_in_row("_EXXXE_"), 0);
+        assert_eq!(x_1_empty_2_in_row("_EXXX_"), 0);
+
+        assert_eq!(x_1_empty_2_in_row("_XXE_"), 1);
+        assert_eq!(x_1_empty_2_in_row("_EEXXE_"), 0);
+        assert_eq!(x_1_empty_2_in_row("_OXXE_"), 1);
+        assert_eq!(x_1_empty_2_in_row("_EXXE_"), 0);
+        assert_eq!(x_1_empty_2_in_row("_EEXXEE_"), 0);
+        assert_eq!(x_1_empty_2_in_row("_EXXEXX_"), 1);
+        assert_eq!(x_1_empty_2_in_row("_XXEEXX_"), 2);
+
     }
 
     #[test]
